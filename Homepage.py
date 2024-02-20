@@ -10,13 +10,6 @@ st.set_page_config(
 
 st.title("Main Page")
 
-st.write('Here find the the first 3 steps in our sample scouting for a LB in the PSL')
-st.subheader('Step 1: Identify top players')
-st.write('Click on the Find tab to determine the top LBs by attacking and defensive quality')
-st.subheader('Step 2: Understand the overall game of the top PSL LBs')
-st.write('Click on the Compare tab to understand how your LB differs in quality and capabilities with top LBs at a more granular level')
-st.subheader('Step 3: Summarise the information for referencing back')
-st.write('Click on the Summarise tab to quickly see the overall atributes of the LBs identified')
-st.subheader('Step 4: Delve deeper into understanding the exact nature and quality of players actions')
-st.write("Here we show the exact actions and quality of each identified LB to examine every on ball action, contact us to take the next step in the scouting journey")
+st.write('Here find the the first 3 steps in our sample scouting for a striker in the PSL with a focus on comparing Iqraam Rayners to Ashley Du Preez')
+st.write("Click through the tabs to explore how to compare/scout with respect to: finishing, pressing, off-ball movement and on-ball contributions")
 
