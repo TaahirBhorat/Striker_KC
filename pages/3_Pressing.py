@@ -1,4 +1,4 @@
-from statsbombpy import sb
+#from statsbombpy import sb
 #from sklearn.preprocessing import StandardScaler
 import pandas as pd
 import plotly.express as px
