@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
-# [Include your functions calculate_heatmap_frequencies, create_soccer_pitch_with_boxes, plot_heatmap_with_pitch here]
+# [Include your functions csdasdalculate_heatmap_frequencies, create_soccer_pitch_with_boxes, plot_heatmap_with_pitch here]
 def calculate_heatmap_frequencies(data, grid_size_x, grid_size_y, pitch_length=104, pitch_width=68):
     """
     Calculate the frequencies for the heatmap.
