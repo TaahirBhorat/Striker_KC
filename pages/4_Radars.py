@@ -3,8 +3,8 @@ import pandas as pd
 import plotly.graph_objects as go
 import numpy as np
 # Load your data
-file_path = 'data/merged_psl_players_throughballs (1).csv'
-df = pd.read_csv(file_path)
+file_path = 'data/new_final_merged_dataset_only_xgchain.csv'
+df = pd.read_csv(file_path, sep=";")
 
 # Updating column names by removing 'player_season_' prefix
 df.columns = [col.replace('player_season_', '') for col in df.columns]
