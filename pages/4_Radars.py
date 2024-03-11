@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import numpy as np
 # Load your data
-file_path = '/Users/taahir/Downloads/Striker_KC/data/corrected_merged_dataset_with_shot_time.csv'
+file_path = 'data/corrected_merged_dataset_with_shot_time.csv'
 df = pd.read_csv(file_path, sep=",")
 
 # Updating column names by removing 'player_season_' prefix
