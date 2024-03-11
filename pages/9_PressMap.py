@@ -86,7 +86,7 @@ def plot_heatmap_with_pitch(heatmap, title, grid_size_x, grid_size_y, pitch_leng
 #    return pd.read_csv('data/Fynspadnew.csv')  
 
 #data = load_data()
-data = pd.read_csv('data/Fynspadnew2.csv')  
+data = pd.read_csv('data/Fynspadfin.csv')  
 # Streamlit UI
 st.title('Player Defensive Actions Heatmap')
 
