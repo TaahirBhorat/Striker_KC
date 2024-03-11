@@ -3,15 +3,15 @@ import pandas as pd
 import plotly.graph_objects as go
 import numpy as np
 # Load your data
-file_path = 'data/new_final_merged_dataset_only_xgchain.csv'
-df = pd.read_csv(file_path, sep=";")
+file_path = '/Users/taahir/Downloads/Striker_KC/data/corrected_merged_dataset_with_shot_time.csv'
+df = pd.read_csv(file_path, sep=",")
 
 # Updating column names by removing 'player_season_' prefix
 df.columns = [col.replace('player_season_', '') for col in df.columns]
 
 # Define categories and their colors
 categories = {
-    'Finishing': ['np_xg_per_shot', 'np_xg_90', 'np_shots_90', 'goals_90'],
+    'Finishing': ['np_xg_per_shot', 'np_xg_90', 'np_shots_90', 'goals_90', 'mean_shot_time'],
     'Passing': ['obv_pass_90', 'op_xa_90', 'op_key_passes_90'],
     'Dribbling': ['touches_inside_box_90', 'obv_dribble_carry_90'],
     'Off_ball': ['turnovers_90', 'padj_pressures_90', 'aerial_wins_90', 'counterpressure_regains_90', 'through balls received per 90']
