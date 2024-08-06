@@ -62,7 +62,7 @@ def create_soccer_pitch_with_boxes(pitch_length=104, pitch_width=68):
 
 st.title('PSL 23/24 OP Shot Maps')
 #player_choices = data['player_name'].unique()
-player_choices = ["Iqraam Rayners", 'Ashley Du Preez']
+player_choices = ["Iqraam Rayners", 'Ashley Cupido']
 
 body_part_symbols = {
     'Right Foot': 'circle',

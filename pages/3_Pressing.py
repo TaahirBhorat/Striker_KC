@@ -123,7 +123,7 @@ psl_strikers['Effectiveness'] = (
 
 
 ########JUST PLOTTING########
-psl_strikers['selected'] = psl_strikers['player_name'].apply(lambda x: 'green' if x in ['Iqraam Rayners', 'Ashley Du Preez', 'Ranga Piniel Chivaviro', 'Khanyisa Mayo'] else 'red')
+psl_strikers['selected'] = psl_strikers['player_name'].apply(lambda x: 'green' if x in ['Iqraam Rayners', 'Ashley Cupido'] else 'red')
 
 x_filtered = psl_strikers['Effectiveness']
 y_filtered = psl_strikers['Intensity']
@@ -142,7 +142,8 @@ fig.add_trace(go.Scatter(
         size=10
     ),
     #text=names_filtered,
-    text=[f'{name}<br>Defensive Actions p90: {effec:.2f}<br>Pressures p90: {intens:.2f}' for name, effec, intens in zip(psl_strikers['player_name'],psl_strikers['Effectiveness'], psl_strikers['Intensity'])],  # Customized hover text
+    #text=[f'{name}<br>Defensive Actions p90: {effec:.2f}<br>Pressures p90: {intens:.2f}' for name, effec, intens in zip(psl_strikers['player_name'],psl_strikers['Effectiveness'], psl_strikers['Intensity'])],  # Customized hover text
+    text=[f'Defensive Actions p90: {effec:.2f}<br>Pressures p90: {intens:.2f}' for name, effec, intens in zip(psl_strikers['player_name'],psl_strikers['Effectiveness'], psl_strikers['Intensity'])],  # Customized hover text
     hoverinfo='text'
 ))
 # Calculate and plot the mean lines for the filtered data
@@ -172,7 +173,8 @@ for i, (x, y) in enumerate(text_coordinates):
         yanchor='bottom'
     )
 for i, (x, y, name) in enumerate(zip(x_filtered, y_filtered, names_filtered)):
-    fig.add_annotation(
+    if name in ['Iqraam Rayners','Ashley Cupido']:
+        fig.add_annotation(
         x=x,
         y=y + 0.04,
         text=name,

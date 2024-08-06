@@ -15,9 +15,12 @@ def main():
     df_filtered['Goals_minus_xG'] = df_filtered['player_season_goals_90'] - df_filtered['player_season_np_xg_90']
 
     # Create the Plotly scatter plot
+    df_filtered['highlighted_names'] = df_filtered.apply(
+    lambda row: row['player_name'] if row['player_name'] in ['Iqraam Rayners', 'Ashley Cupido'] else '', axis=1)
+
     fig = px.scatter(df_filtered, x='player_season_np_xg_90', y='player_season_goals_90',
-                     text='player_name', hover_data=['Goals_minus_xG', 'team_name'],
-                     labels={'player_season_np_xg_90': 'NP xG/90', 'player_season_goals_90': 'Goals/90'},
+                     text='highlighted_names', hover_data=['Goals_minus_xG', 'team_name'],
+                     #labels={'player_season_np_xg_90': 'NP xG/90', 'player_season_goals_90': 'Goals/90'},
                      title='NP xG/90 vs Goals/90')
 
     # Adding mean lines
