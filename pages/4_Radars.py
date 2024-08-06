@@ -6,6 +6,7 @@ from matplotlib import cm
 from matplotlib.colors import to_hex
 
 
+
 # Display the image and text above the sidebar
 st.sidebar.markdown(
     """

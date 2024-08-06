@@ -6,7 +6,46 @@ import pandas as pd
 def main():
     st.title('PSL Strikers Analysis')
 
-    df = pd.read_csv("data/PSlPlayers_STR (1).csv")
+    df = pd.read_csv("data/Through_Balls_Received_Per_90_Updated.csv")
+
+    # Define the mapping dictionary
+    position_map = {
+        'Center Forward': 'CF',
+        'Left Wing': 'LW',
+        'Right Wing': 'RW',
+        'Left Back': 'LB',
+        'Right Back': 'RB',
+        'Center Midfield': 'M',
+        'Left Midfield': 'LW',
+        'Left Midfielder': 'LW',
+        'Right Midfield': 'RW',
+        'Right Midfielder': 'RW',
+        'Defensive Midfielder': 'DM',
+        'Attacking Midfielder': 'M',
+        'Center Back': 'CB',
+        'Goalkeeper': 'GK',
+        'Left Centre Back': 'CB',
+        'Right Centre Back': 'CB',
+        'Left Defensive Midfielder': 'DM',
+        'Right Defensive Midfielder': 'DM',
+        'Centre Attacking Midfielder': 'M',
+        'Centre Defensive Midfielder': 'DM',
+        'Left Wing Back': 'LW',
+        'Right Wing Back': 'RW',
+        'Right Forward': 'RW',
+        'Left Forward': 'LW',
+        'Centre Forward': 'CF',
+        'Left Centre Midfielder': 'M',
+        'Left Centre Forward': 'CF',
+        'Right Centre Forward': 'CF',
+        'Right Centre Midfielder': 'M',
+        'Left Attacking Midfielder': 'M',
+        'Right Attacking Midfielder': 'M'
+    }
+
+    # Map the primary_position to position
+    df['position'] = df['primary_position'].map(position_map)
+    df = df[df['position']=="CF"]
 
     # Filter for players with more than 400 minutes
     df_filtered = df[df['player_season_minutes'] > 400]
