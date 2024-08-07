@@ -9,11 +9,18 @@ tsne_df = pd.read_csv("data/pics/tsne.csv")
 color_map = {cat: px.colors.qualitative.G10[i % len(px.colors.qualitative.G10)] for i, cat in enumerate(tsne_df['pos_cat'].unique())}
 symbol_map = {comp: i for i, comp in enumerate(tsne_df['competition_name'].unique())}
 
+special_players = ['Iqraam Rayners', 'Ashley Cupido']
+
+# Create a custom color mapping function
+def get_color(row):
+    if row['player_name'] in special_players:
+        return 'white'
+    return color_map[row['pos_cat']]
+
 # Create a Plotly figure
 fig = go.Figure()
 
-# Add a scatter trace for each position category
-for pos_cat, color in color_map.items():
+for pos_cat in tsne_df['pos_cat'].unique():
     filtered_df = tsne_df[tsne_df['pos_cat'] == pos_cat]
     
     fig.add_trace(go.Scatter(
@@ -23,13 +30,14 @@ for pos_cat, color in color_map.items():
         name=pos_cat,
         marker=dict(
             size=7,
-            color=color,  # Assign a unique color code
+            color=filtered_df.apply(get_color, axis=1),  # Assign colors using the custom mapping function
             symbol=filtered_df['competition_name'].map(symbol_map),  # Shape by competition name
             showscale=False  # Disable the color scale for each individual trace
         ),
         text=filtered_df.apply(lambda row: f"{row['competition_name']}<br>{row['player_name']}<br>{row['pos_cat']}", axis=1),
         hoverinfo='text'
     ))
+
 
 # Create a scatter trace for the shape legend
 for comp, symbol in symbol_map.items():
@@ -44,9 +52,9 @@ for comp, symbol in symbol_map.items():
 
 # Update layout
 fig.update_layout(
-    title='t-SNE Visualization',
-    xaxis_title='TSNE1',
-    yaxis_title='TSNE2',
+    title='',
+    xaxis_title='Length',
+    yaxis_title='Width',
     legend_title_text='Position',
     legend=dict(itemsizing='constant'),
     paper_bgcolor='#303030',
@@ -58,5 +66,5 @@ fig.update_layout(
 )
 
 # Streamlit code to display the plot
-st.title('t-SNE Visualization')
+st.title('Comparison Visualization')
 st.plotly_chart(fig)
