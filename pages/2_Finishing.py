@@ -46,6 +46,16 @@ def main():
     # Map the primary_position to position
     df['position'] = df['primary_position'].map(position_map)
     df = df[df['position']=="CF"]
+    new_values = {
+    'Ashley Cupido': {'player_season_np_xg_90': 0.29, 'player_season_goals_90': 0.39},
+    'Iqraam Rayners': {'player_season_np_xg_90': 0.38, 'player_season_goals_90': 0.53}
+}
+
+# Update the DataFrame with the new values
+    for player, updates in new_values.items():
+        for column, new_value in updates.items():
+            df.loc[df['player_name'] == player, column] = new_value
+
 
     # Filter for players with more than 400 minutes
     df_filtered = df[df['player_season_minutes'] > 400]
