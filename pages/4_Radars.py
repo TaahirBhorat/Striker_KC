@@ -19,7 +19,8 @@ st.sidebar.markdown(
 # Load your data
 file_path = 'data/Through_Balls_Received_Per_90_Updated.csv'
 df = pd.read_csv(file_path, sep=",")
-def map_filter_rank(df, min_90s_played):
+
+def map_filter_rank(df):
     # Define the mapping dictionary
     position_map = {
         'Center Forward': 'CF',
@@ -59,7 +60,10 @@ def map_filter_rank(df, min_90s_played):
     df['position'] = df['primary_position'].map(position_map)
     df = df[df['position']=="CF"]
     df = df[df['player_season_90s_played']>7]
+    return df
 
+
+df = map_filter_rank(df)
 selected_cols = ['player_season_np_xg_per_shot', 'player_season_np_xg_90', 'player_season_np_shots_90', 'player_season_goals_90','player_season_obv_pass_90', 'player_season_op_xa_90', 
                  'player_season_op_key_passes_90','player_season_touches_inside_box_90', 'player_season_obv_dribble_carry_90','player_season_turnovers_90', 'player_season_padj_pressures_90', 
                  'player_season_aerial_wins_90', 'player_season_counterpressure_regains_90', 'through balls received per 90', 'player_name']
